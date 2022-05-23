@@ -1,0 +1,12 @@
+---
+- name: Vault
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: gcp bucket
+    shell: |
+      ansible-vault encrypt gcp-key.json --vault-password-file password.txt
+      cat gcp-key.json
+      ansible-vault decrypt gcp-key.json --vault-password-file password.txt
+      cat gcp-key.json
